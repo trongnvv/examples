@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
+  namespace: default
   labels:
     k8s-app: nginx
 spec:
@@ -20,19 +21,3 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          periodSeconds: 10
-          successThreshold: 1
-          tcpSocket:
-            port: 80
-          timeoutSeconds: 1
-        livenessProbe:
-          failureThreshold: 3
-          periodSeconds: 10
-          successThreshold: 1
-          tcpSocket:
-            port: 80
-          timeoutSeconds: 1
-
-
